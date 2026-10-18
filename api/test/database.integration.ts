@@ -30,6 +30,7 @@ test('Real MySQL and HTTP integration in an isolated test schema',async t=>{
     const reg={fullName:'Integration Guest',email:'integration@example.invalid',phone:'0400000000',ticketQuantity:2};
     await t.test('seed, statuses and category lookup',async()=>{
       const r=await get('/events');assert.equal(r.status,200);assert.equal(r.body.data.length,10);assert(!r.body.data.some((e:any)=>[11,12].includes(e.id)));
+      assert(r.body.data.every((e:any)=>/^assets\/photos\/.+\.jpg$/.test(e.imagePath)));assert.equal(new Set(r.body.data.map((e:any)=>e.imagePath)).size,10);
       assert.equal((await get('/categories')).body.data.length,5);
       const [rows]:any=await admin.query('SELECT COUNT(*) n FROM registrations');assert.equal(rows[0].n,12);
     });

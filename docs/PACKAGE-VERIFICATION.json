@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-18T15:27:48.792Z",
+  "date": "2026-10-18T15:44:01.625Z",
   "node": "v24.19.0",
   "source": "Extracted whw343 packages; second member package contents compared separately",
   "results": [
@@ -25,6 +25,10 @@
     },
     {
       "name": "Fresh import of extracted final SQL",
+      "status": "passed"
+    },
+    {
+      "name": "Extracted event photographs and attribution page",
       "status": "passed"
     },
     {

@@ -14,6 +14,19 @@ async function main(){
    await page.locator('img').evaluateAll(images=>images.forEach(img=>img.loading='eager'));await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0));
    await page.screenshot({path:path.join(output,'home-desktop.png'),fullPage:true});
   });
+  await check('Distinct real photographs and public author/source credits are present',async()=>{
+   const paths=await page.locator('event-card img').evaluateAll(images=>images.map(i=>i.getAttribute('src')));
+   assert(paths.every(p=>/^assets\/photos\/.+\.jpg$/.test(p)));assert.equal(new Set(paths).size,10);
+   await page.getByRole('link',{name:'Photo credits & sources',exact:true}).click();await page.getByRole('heading',{name:'Photo credits & sources',exact:true}).waitFor();assert.equal(await page.locator('article').count(),13);
+   await page.locator('img').evaluateAll(images=>images.forEach(i=>i.loading='eager'));await page.waitForFunction(()=>Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0));
+   await page.goto(base);await page.getByRole('heading',{name:'Neighbourhood Lantern Walk'}).waitFor();
+  });
+  await check('Photo load failure shows a local illustration fallback',async()=>{
+   await context.route('**/assets/photos/lantern-walk.jpg',route=>route.abort());await page.goto(base+'/#/events/1');
+   await page.waitForFunction(()=>{const img=document.querySelector('.detail-image');return img&&img.getAttribute('src')==='assets/community.svg'&&img.complete&&img.naturalWidth>0});
+   assert.equal(await page.locator('.detail-image').getAttribute('alt'),'Community illustration; photograph unavailable');
+   await context.unroute('**/assets/photos/lantern-walk.jpg');await page.goto(base);await page.getByRole('heading',{name:'Neighbourhood Lantern Walk'}).waitFor();
+  });
   await check('Combined filters, clear filters and no-result recovery',async()=>{
    await page.getByRole('link',{name:'Find an event',exact:true}).click();await page.getByLabel('Date',{exact:true}).fill('2026-10-23');await page.getByLabel('Location',{exact:true}).fill('Sydney');await page.getByLabel('Category',{exact:true}).selectOption('1');await page.getByRole('button',{name:'Find events'}).click();await page.getByText('1 events found',{exact:true}).waitFor();assert.equal(await page.locator('event-card').count(),1);
    await page.reload();await page.getByText('1 events found',{exact:true}).waitFor();assert.equal(await page.getByLabel('Location',{exact:true}).inputValue(),'Sydney');

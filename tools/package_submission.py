@@ -30,7 +30,7 @@ for person, prefix in [('满', 'whw343'), ('肖', 'daitongxiao')]:
             add_tree(archive, ROOT / source, kind)
             if kind == 'adminside':
                 archive.write(ROOT / 'api/database/charityevents-a3.sql', 'adminside/charityevents-a3.sql')
-                for name in ['ARCHITECTURE.md', 'VERIFICATION.md', 'PACKAGE-VERIFICATION.json', 'DEMO-GUIDE.zh-CN.md', 'backend-test-output.txt']:
+                for name in ['ARCHITECTURE.md', 'VERIFICATION.md', 'PACKAGE-VERIFICATION.json', 'browser-edge-results.json', 'browser-chrome-results.json', 'DEMO-GUIDE.zh-CN.md', 'backend-test-output.txt']:
                     archive.write(ROOT / 'docs' / name, 'adminside/docs/' + name)
         with ZipFile(target) as archive:
             assert archive.testzip() is None

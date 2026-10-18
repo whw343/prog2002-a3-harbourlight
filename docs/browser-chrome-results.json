@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-18T15:42:52.035Z",
+  "base": "http://localhost:4201",
+  "channel": "chrome",
+  "results": [
+    {
+      "name": "Home displays 10 database-backed public events and all illustrations load",
+      "status": "passed"
+    },
+    {
+      "name": "Distinct real photographs and public author/source credits are present",
+      "status": "passed"
+    },
+    {
+      "name": "Photo load failure shows a local illustration fallback",
+      "status": "passed"
+    },
+    {
+      "name": "Combined filters, clear filters and no-result recovery",
+      "status": "passed"
+    },
+    {
+      "name": "Selected event details and registration form validation",
+      "status": "passed"
+    },
+    {
+      "name": "Registration submission persists and returns to the event registration list",
+      "status": "passed"
+    },
+    {
+      "name": "Duplicate registration gives useful feedback and preserves input",
+      "status": "passed"
+    },
+    {
+      "name": "Invalid, suspended and past event states",
+      "status": "passed"
+    },
+    {
+      "name": "Network failure shows an error and retry recovers",
+      "status": "passed"
+    },
+    {
+      "name": "Mobile layout, detail and registration do not overflow horizontally",
+      "status": "passed"
+    },
+    {
+      "name": "Keyboard skip navigation and runtime errors",
+      "status": "passed"
+    }
+  ],
+  "errors": []
+}

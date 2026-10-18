@@ -29,3 +29,7 @@ The API does not expose the Navicat manager's credentials or provide an HTTP sub
 Technology references: [Angular compatibility](https://angular.dev/reference/versions), [Open-Meteo forecast API](https://open-meteo.com/en/docs), [Navicat Premium Lite](https://www.navicat.com/en/products/navicat-premium-lite.html). Checked during implementation on 18 October 2026.
 
 Git commits made by Codex are labelled as assistant contributions. They are not evidence that either student individually wrote the code. Students must truthfully describe actual contributions and understand the submitted work.
+
+## Photograph update
+
+The public banner and all 12 seeded event image paths now use 13 distinct, licensed stock photographs stored locally. They are illustrative activity photographs, not documentary images of the fictional events. Public author/source credits and a checksum manifest accompany the assets. Failed images fall back to the original local SVG. The user explicitly requested public GitHub visibility; the team repository is now public. This is distinct from the original brief’s repository-access wording.

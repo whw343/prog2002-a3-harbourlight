@@ -50,3 +50,7 @@ Current acceptance: repeatable local setup, working query/registration/weather f
 ## Implementation checkpoint
 
 The public Angular application, Node API, database constraints, local running configuration and three package types have now been implemented. The user successfully connected Navicat and opened the 12-row event table. Backend tests, Edge/Chrome workflows and an extracted-package reinstall/build/import/HTTP check have passed; see VERIFICATION.md and PACKAGE-VERIFICATION.json for scope and limitations. No student recording, peer evaluation or actual course submission is claimed.
+
+## User-requested public repository and real photographs
+
+The user explicitly requested changing the A3 GitHub repository to public and replacing illustrations with real photographs. Visibility was changed and verified PUBLIC. All 12 seeded event image paths and the homepage banner now reference locally stored Pexels stock photos. Photos are labeled as illustrative, with source/author/license documentation; no endorsement or event authenticity is claimed. Packages must be regenerated, reverified and copied to both delivery locations after this update. Earlier mentions of a private repository describe the former state.

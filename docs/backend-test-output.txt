@@ -1,24 +1,24 @@
 ▶ Real MySQL and HTTP integration in an isolated test schema
-  ✔ seed, statuses and category lookup (54.8404ms)
-  ✔ combined search, wildcard handling and invalid filters (60.252ms)
-  ✔ detail isolates registrations, sorts newest first, and omits contact data (47.2096ms)
-  ✔ registration persists and shows on the detail response (31.7544ms)
-  ✔ same person may register for another event, but not the same event twice (35.5349ms)
-  ✔ concurrent submissions create only one registration (17.4983ms)
-  ✔ invalid tickets, past and suspended events are rejected (88.4141ms)
-  ✔ Navicat-style direct edits still enforce core constraints (9.772ms)
-  ✔ direct event changes propagate to public APIs (34.7653ms)
-  ✔ Navicat-style event creation derives the local date and is immediately readable (17.4765ms)
-  ✔ deletion is blocked with registrations and allowed without them (12.9626ms)
-  ✔ Sydney local date is recomputed across daylight saving transitions (6.3608ms)
-  ✔ unused admin HTTP routes are absent and application user cannot modify events (8.5509ms)
-✔ Real MySQL and HTTP integration in an isolated test schema (598.976ms)
-✔ Registration rejects malformed inputs and normalizes the user identity (1.2451ms)
-✔ Filters reject ambiguous input and invalid calendar dates (15.3425ms)
-✔ Weather maps provider codes without copying the brief typo (0.1526ms)
-✔ Out-of-range event dates do not request an unrelated forecast (3.1149ms)
-✔ Weather failure degrades without blocking registration (0.8711ms)
-✔ Weather selects the event date from the provider response (14.9159ms)
+  ✔ seed, statuses and category lookup (60.2919ms)
+  ✔ combined search, wildcard handling and invalid filters (65.5951ms)
+  ✔ detail isolates registrations, sorts newest first, and omits contact data (62.7475ms)
+  ✔ registration persists and shows on the detail response (31.6681ms)
+  ✔ same person may register for another event, but not the same event twice (32.4128ms)
+  ✔ concurrent submissions create only one registration (18.7474ms)
+  ✔ invalid tickets, past and suspended events are rejected (89.7645ms)
+  ✔ Navicat-style direct edits still enforce core constraints (6.2802ms)
+  ✔ direct event changes propagate to public APIs (37.4881ms)
+  ✔ Navicat-style event creation derives the local date and is immediately readable (16.9427ms)
+  ✔ deletion is blocked with registrations and allowed without them (13.0916ms)
+  ✔ Sydney local date is recomputed across daylight saving transitions (8.3674ms)
+  ✔ unused admin HTTP routes are absent and application user cannot modify events (2.3957ms)
+✔ Real MySQL and HTTP integration in an isolated test schema (651.9883ms)
+✔ Registration rejects malformed inputs and normalizes the user identity (1.8977ms)
+✔ Filters reject ambiguous input and invalid calendar dates (21.6728ms)
+✔ Weather maps provider codes without copying the brief typo (0.4732ms)
+✔ Out-of-range event dates do not request an unrelated forecast (5.0032ms)
+✔ Weather failure degrades without blocking registration (1.0418ms)
+✔ Weather selects the event date from the provider response (20.4194ms)
 ℹ tests 20
 ℹ suites 0
 ℹ pass 20
@@ -26,4 +26,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 1120.9159
+ℹ duration_ms 1352.6932

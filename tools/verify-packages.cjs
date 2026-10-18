@@ -17,6 +17,9 @@ async function main(){
   const response=await fetch(base+'/');const html=await response.text();if(response.status!==200||!html.includes('<app-root>'))throw Error('Extracted frontend not served');
   const asset=html.match(/src="(main-[^"]+\.js)"/);if(!asset||(await fetch(base+'/'+asset[1])).status!==200)throw Error('Built frontend asset unavailable');
   const events=await (await fetch(base+'/api/events')).json();if(events.data.length!==10)throw Error('Event list mismatch');
+  for(const event of events.data){const image=await fetch(base+'/'+event.imagePath);const bytes=new Uint8Array(await image.arrayBuffer());if(!image.ok||bytes[0]!==255||bytes[1]!==216)throw Error('Extracted event photo missing: '+event.imagePath);}
+  const credits=await fetch(base+'/photo-credits.html');if(!credits.ok||!(await credits.text()).includes('Photo credits &amp; sources'))throw Error('Photo credits missing');
+  results.push({name:'Extracted event photographs and attribution page',status:'passed'});
   const registration=await fetch(base+'/api/events/1/registrations',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fullName:'Extracted Package Test',email:'extracted@example.invalid',phone:'0400000000',ticketQuantity:2})});if(registration.status!==201)throw Error('Extracted registration failed');
   const detail=await (await fetch(base+'/api/events/1')).json();if(detail.data.registrations.length!==6)throw Error('Extracted detail mismatch');
   const duplicate=await fetch(base+'/api/events/1/registrations',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fullName:'Extracted Package Test',email:'extracted@example.invalid',phone:'0400000000',ticketQuantity:2})});if(duplicate.status!==409)throw Error('Duplicate protection failed');

@@ -59,7 +59,7 @@ export function eventInput(body:any):EventInput {
     output[key]=body[key];
   }
   const imagePath=body?.imagePath||'assets/community.svg';
-  if(typeof imagePath!=='string'||!/^assets\/[a-z0-9-]+\.svg$/.test(imagePath)) fail('Choose a supplied event illustration.');
+  if(typeof imagePath!=='string'||!/^assets\/(?:photos\/)?[a-z0-9-]+\.(?:svg|jpg)$/.test(imagePath)) fail('Choose a supplied event photograph or illustration.');
   output.imagePath=imagePath;
   return output as EventInput;
 }

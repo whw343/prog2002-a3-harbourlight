@@ -21,7 +21,7 @@ Runtime API configuration is in `public/config.js` (source) and `dist/browser/co
 - Event: details, fundraising progress, latest-first registration list and event-day weather.
 - Register: selected event summary, validation, ticket quantity/total, database-backed confirmation and return to detail.
 
-All illustrations are original local geometric SVG artwork; they are not photographs. No remote fonts or remote images are needed. Text output uses Angular's safe interpolation. Local form validation is backed by API validation and database constraints.
+The main banner and all 12 seeded events use locally stored licensed Pexels photographs. These are theme photographs, not records of the fictional events. Sources, authors and license links are in PHOTO-SOURCES.md and the public photo-credits.html page. Original SVG artwork remains as a failure fallback. No remote fonts or remotely loaded photographs are needed. Text output uses Angular's safe interpolation. Local form validation is backed by API validation and database constraints.
 
 ## Browser checks
 
