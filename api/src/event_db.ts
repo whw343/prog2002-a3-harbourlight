@@ -19,7 +19,7 @@ export function createEventDb(pool:mysql.Pool) {
     if(!rows.length) throw new ApiError(404,'NOT_FOUND','Event not found.');
     const contact=admin?',email,phone':'';
     const [registrations]=await pool.execute<RowDataPacket[]>(`SELECT id,full_name,ticket_quantity,registered_at${contact} FROM registrations WHERE event_id=? ORDER BY registered_at DESC,id DESC`,[eventId]);
-    return {...event(rows[0]),registrations:registrations.map(r=>({id:r.id,fullName:r.full_name,ticketQuantity:r.ticket_quantity,registeredAt:iso(r.registered_at),...(admin?{email:r.email,phone:r.phone}:{})}))};
+    return {...event(rows[0]),registrations:registrations.map(r=>({id:r.id,fullName:r.full_name,ticketQuantity:Number(r.ticket_quantity),registeredAt:iso(r.registered_at),...(admin?{email:r.email,phone:r.phone}:{})}))};
   }
   return {
     async listEvents(f:{date?:string;location?:string;category?:number}={},admin=false) {

@@ -20,7 +20,7 @@ export function createApp(db:Db) {
   app.post('/api/events/:id/registrations',async(req,res)=>res.status(201).json({data:await db.register(id(req.params.id),registration(req.body))}));
   app.use('/api',(_req,res)=>res.status(404).json({error:{code:'NOT_FOUND',message:'Endpoint not found.'}}));
   // Optional single-server local setup: copy the built public frontend to public/.
-  const publicDir=path.resolve(__dirname,'../public');
+  const publicDir=path.resolve(__dirname,'../../clientside/dist/browser');
   if(fs.existsSync(publicDir)) {app.use(express.static(publicDir));app.get('/{*rest}',(_req,res)=>res.sendFile(path.join(publicDir,'index.html')));}
   app.use((error:any,_req:express.Request,res:express.Response,_next:express.NextFunction)=>{
     if(error instanceof ApiError){res.status(error.status).json({error:{code:error.code,message:error.message}});return;}

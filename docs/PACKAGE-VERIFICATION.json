@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-18T15:27:48.792Z",
+  "node": "v24.19.0",
+  "source": "Extracted whw343 packages; second member package contents compared separately",
+  "results": [
+    {
+      "command": "ci --offline --no-audit --no-fund",
+      "directory": "api",
+      "status": "passed"
+    },
+    {
+      "command": "ci --offline --no-audit --no-fund",
+      "directory": "clientside",
+      "status": "passed"
+    },
+    {
+      "command": "run build",
+      "directory": "api",
+      "status": "passed"
+    },
+    {
+      "command": "run build",
+      "directory": "clientside",
+      "status": "passed"
+    },
+    {
+      "name": "Fresh import of extracted final SQL",
+      "status": "passed"
+    },
+    {
+      "name": "Extracted frontend assets + MySQL API + successful registration + duplicate rejection",
+      "status": "passed"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ CREATE TABLE events (
   name VARCHAR(160) NOT NULL,
   start_at_utc DATETIME NOT NULL,
   end_at_utc DATETIME NOT NULL,
-  start_local_date DATE NOT NULL COMMENT 'Australia/Sydney calendar date of start_at_utc',
+  start_local_date DATE NOT NULL DEFAULT '2000-01-01' COMMENT 'Australia/Sydney calendar date of start_at_utc',
   venue VARCHAR(160) NOT NULL,
   city VARCHAR(100) NOT NULL,
   purpose VARCHAR(255) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE registrations (
  full_name VARCHAR(120) NOT NULL,
  email VARCHAR(254) NOT NULL,
  phone VARCHAR(30) NOT NULL,
- ticket_quantity DECIMAL(4,1) NOT NULL,
+ ticket_quantity DECIMAL(10,6) NOT NULL,
  registered_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
  CONSTRAINT fk_registration_event FOREIGN KEY(event_id) REFERENCES events(id) ON DELETE RESTRICT,
  email_normalized VARCHAR(254) GENERATED ALWAYS AS (LOWER(TRIM(email))) STORED,
@@ -213,7 +213,7 @@ BEGIN
   SET NEW.email = LOWER(TRIM(NEW.email));
   SET NEW.full_name = TRIM(NEW.full_name);
   SET NEW.phone = TRIM(NEW.phone);
-  IF CHAR_LENGTH(NEW.full_name) < 2 OR NEW.email NOT REGEXP '^[^ @]+@[^ @]+[.][^ @]+$' OR CHAR_LENGTH(NEW.phone) < 6 THEN
+  IF CHAR_LENGTH(NEW.full_name) < 2 OR NEW.email NOT REGEXP '^[^[:space:]@]+@[^[:space:]@]+[.][^[:space:]@]+$' OR CHAR_LENGTH(NEW.phone) < 6 THEN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Valid name, email and phone are required';
   END IF;
   IF NEW.ticket_quantity < 1 OR NEW.ticket_quantity > 20 OR NEW.ticket_quantity <> FLOOR(NEW.ticket_quantity) THEN
@@ -230,7 +230,7 @@ BEGIN
   SET NEW.email = LOWER(TRIM(NEW.email));
   SET NEW.full_name = TRIM(NEW.full_name);
   SET NEW.phone = TRIM(NEW.phone);
-  IF CHAR_LENGTH(NEW.full_name) < 2 OR NEW.email NOT REGEXP '^[^ @]+@[^ @]+[.][^ @]+$' OR CHAR_LENGTH(NEW.phone) < 6 THEN
+  IF CHAR_LENGTH(NEW.full_name) < 2 OR NEW.email NOT REGEXP '^[^[:space:]@]+@[^[:space:]@]+[.][^[:space:]@]+$' OR CHAR_LENGTH(NEW.phone) < 6 THEN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Valid name, email and phone are required';
   END IF;
   IF NEW.ticket_quantity < 1 OR NEW.ticket_quantity > 20 OR NEW.ticket_quantity <> FLOOR(NEW.ticket_quantity) THEN

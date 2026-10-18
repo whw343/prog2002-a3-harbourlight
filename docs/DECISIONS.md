@@ -46,3 +46,7 @@ The user states that the latest requirements no longer require cPanel, and expli
 - Existing cPanel references and build helpers in preliminary files are historical scaffolding, not current requirements. Remove or revise them when finalizing the packages.
 
 Current acceptance: repeatable local setup, working query/registration/weather flows, database integrity, and verified packages. No cPanel completion or online deployment is claimed.
+
+## Implementation checkpoint
+
+The public Angular application, Node API, database constraints, local running configuration and three package types have now been implemented. The user successfully connected Navicat and opened the 12-row event table. Backend tests, Edge/Chrome workflows and an extracted-package reinstall/build/import/HTTP check have passed; see VERIFICATION.md and PACKAGE-VERIFICATION.json for scope and limitations. No student recording, peer evaluation or actual course submission is claimed.

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "ng serve --host 127.0.0.1 --port 4200",
-    "build": "ng build"
+    "build": "ng build",
+    "test:e2e": "node test/browser.cjs"
   },
   "engines": {
     "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
@@ -23,6 +24,7 @@
     "@angular/build": "22.2.3",
     "@angular/cli": "22.2.3",
     "@angular/compiler-cli": "22.2.3",
+    "playwright": "^1.62.1",
     "typescript": "~6.0.0"
   }
 }

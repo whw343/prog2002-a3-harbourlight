@@ -10,7 +10,7 @@ async function main(){
   const rootPassword=crypto.randomBytes(24).toString('hex');
   const connection=await mysql.createConnection({host:'127.0.0.1',port:4338,user:'root',password:JSON.parse(fs.readFileSync(path.join(root,'.runtime/bootstrap-root.json'),'utf8')).password,multipleStatements:true});
   await connection.query(`CREATE DATABASE \`${dbName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci`);
-  await connection.changeUser({database:dbName});
+  await connection.query(`USE \`${dbName}\``);
   // mysql CLI DELIMITER directives are removed; the driver sends all statements together.
   const sql=fs.readFileSync(path.join(root,'api/database/charityevents-a3.sql'),'utf8').replace(/^DELIMITER.*$/gm,'').replace(/END\$\$/g,'END;');
   await connection.query(sql);
